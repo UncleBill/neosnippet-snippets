@@ -4,6 +4,26 @@ alias       shebang
 options     head
 	#!/usr/bin/env python3
 	${0}
+abbr        #!/usr/bin/env python
+options     head
+	#!/usr/bin/env python
+    # -*- coding: utf-8 -*-
+
+snippet     imp
+abbr        import
+options     head
+    import ${1:module}
+
+snippet     docs
+abbr        docstring
+options     head
+	"""
+    File: ${1:`expand('%:t')`}
+	Author: `g:snips_author`
+	Email: `g:snips_email`
+	Github: `g:snips_github`
+	Description: ${2}
+	"""
 
 snippet     class
 abbr        class Class(...): ...

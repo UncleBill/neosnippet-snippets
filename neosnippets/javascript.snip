@@ -11,23 +11,37 @@ options word
     ${0:TARGET}
   }
 
-snippet function2
-abbr    func2
-options head
-  function ${1:function_name}(${2:argument}) {
-    ${0:TARGET}
-  }
-
 snippet proto
 options head
   ${1:#:class_name}.prototype.${2:#:method_name} = function(${3:#:first_argument}) {
     ${0:TARGET}
   };
 
+snippet     vfunc
+abbr        var func = function
+options     head
+    var ${1:fn} = function(${2}) {
+        ${3}
+        };
 
 snippet f
 options word
   function(${1}) { ${0:TARGET} };
+
+snippet     )f
+abbr        Immediate function
+options     head
+	(function (${1}) {
+		${3:/* code */}
+	}(${2}));
+
+snippet setTimeout-function
+options head
+  setTimeout(function() { ${0} }, ${1:10});
+
+snippet setTimeout
+options head
+  setTimeout(function() {${0}}, ${1:10});
 
 snippet if
 options head
@@ -41,17 +55,19 @@ options head
   if (${1:#:condition}) {
     ${0:TARGET}
   } else {
+    ${1:TARGET}
   }
 
-snippet for
-options head
-  for (var ${1:i}=0; $1 < ${2:#:Things}.length; ++$1) {
-    ${0:TARGET}
-  }
+snippet     for
+abbr        for loop
+options     head
+    for (${1:var }${2:i} = 0; $2 < ${3:counter}; ++$2) {
+        ${4}
+    }
 
 snippet forin
 options head
-  for (var ${1:i} in ${2:#:Things}) {
+  for (${1:var i} in ${2:#:Things}) {
     ${0:TARGET}
   }
 
@@ -93,13 +109,6 @@ abbr :,
 options word
   ${1:#:value_name}: ${0:#:value},
 
-#snippet key
-#options word
-#  ${1:#:key}: "${2:#:value}"}${3:, }
-
-snippet setTimeout-function
-options head
-  setTimeout(function() { ${0} }, ${1:10});
 
 snippet console-log
 alias cl
@@ -132,3 +141,31 @@ options head
     'use strict';
     ${0:TARGET}
   })(${2});
+
+snippet     v
+abbr        var
+options     head
+    var ${1};
+
+snippet     v=
+abbr        var =
+options     head
+    var ${1} = ${2};
+
+
+snippet     ctime
+abbr        console.time(End)
+options     head
+    console.time('${1:test}');
+    console.timeEnd('$1');
+
+
+snippet     title
+abbr        document.title
+options     head
+    document.title
+
+snippet     req
+abbr        require( module )
+options     head
+    var ${2:$1} = require("${1}");
